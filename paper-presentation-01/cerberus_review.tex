@@ -1,0 +1,105 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{color}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{subfig}
+\usepackage{mdwlist}
+\usepackage[pagebackref=true]{hyperref}%
+
+\hyphenation{hetero-geneous op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+\title{A Case for Scaling Applications to Many-core with OS Clustering}
+\author{
+(reviewed by Oleg Iegorov and Jander Nascimento)}
+% type author(s) between braces
+\maketitle
+
+%\section{Introduction}
+This paper proposes a new way to scale operating systems for many cores
+--- \emph{OS clustering}. 
+%The need to scale an OS in many-core environments
+%stems from the fact, that with the increasing number of cores, OS should
+%efficiently share them while avoiding data contention. 
+The need to scale
+stems from the fact, that with the increasing number of cores in
+contemporary systems, OS should
+efficiently share these cores between running applications, while avoiding data contention. 
+The proposed
+system called \emph{Cerberus} clusters several commodity operating systems atop
+a VMM and provides to applications the traditional shared memory
+interface.  Cerberus adds to VMM the support for resource sharing and
+communication between operating systems (running as VMs), as well as implementing system
+call routing to provide an illusion for applications as running on a
+single operating system.  The motivation of this approach is that
+commodity operating systems (Linux, FreeBSD, etc.) can scale well with a
+small number of CPU cores, while one VMM can efficiently consolidate
+multiple operating systems. Thus Cerberus's approach uses several
+operating systems to serve one application, without requiring any
+modification of existing parallel programs.
+
+The problem of scaling operating systems on shared memory multicore and
+multiprocessor machines is not new, and there basically exist two main
+approaches to solve this problem:
+
+\begin{enumerate*}
+  \item designing new operating systems from scratch;
+  \item refining commodity OS kernels.
+\end{enumerate*}
+
+Cerberus uses a middle ground between these two trends, taking advantage
+of both solutions' ideas.
+
+The first main idea used by Cerberus is an extension of traditional VMMs
+with support for efficient resource sharing among the clustered
+operating systems. This extension is needed due to the fact that
+different OS may want to share some resources (address spaces, files), as
+one application can run on several OS. However, traditional VMMs (like
+Xen) were designed to separate as much as possible running VMs. Solution
+to this problem used by Cerberus is an addition of address range support
+to VMM, as well as an efficient distributed file system.
+
+The second idea consists in incorporation of a system call
+virtualization layer. This allows processes/threads of one application
+to be executed in multiple operating systems, providing users with the
+illusion of running in a single OS. This layer uses the notion of
+``SuperProcess'', which groups processes/threads in multiple OS to
+manage the spawned processes/threads.
+
+\section{Overview of Cerberus}
+
+As was metioned before, one of the main contributions of Cerberus is the
+modification of VMM to allow one application run on several VMs
+simultaneously. This means that processes/threads belonging to one
+shared-memory application now run on multiple operating systems. To
+ensure system consistency in these conditions Cerberus uses the
+following mechanisms.
+
+\begin{itemize}
+  \item Single Shared Memory Interface.
+
+    Cerberus does not require modification of implemented parallel
+    applications, and thus should provide to them the existing
+    shared-memory interface (e.g. POSIX API). To address this issue,
+    Cerberus incorporates a system-call virtualization layer which
+    coordinates system calls in multiple clustered operating systems.
+    All the processes/threads running on different OSes are logically
+    grouped by a \emph{SuperProcess} entity.
+
+  \item Efficient Resource Sharing.
+
+   As traditional VMMs are designed to isolate VMs from each other, the
+   other issue addressed by Cerberus was to allow an efficient sharing
+   of resources (files, networking, etc.) among processes/threads. Thus,
+   Cerberus implements a resource-sharing layer in both the VMM and
+   operating systems.
+
+\end{itemize}
+
+\end{document}
+
