@@ -135,7 +135,9 @@ following mechanisms.
 	
 	By creating an NFS-like interface application per say, the sharing mechanism allows to access a file directly when it is available locally, and request for the \emph{CFS Server} when the file is only available remotely.
 
-	Since the access hides the the complexity of having several OSes by representing the data in a single way, this creates a problem for the list operation, which would required to dispatch the listing information to every OS involved and wait for the results before return to the user.
+	Since the access hides the complexity of having several OSes in the backend, this creates a problem for a simple list operation, which would required to dispatch the listing information to every OS involved and wait for the results before return to the user.
+	
+	Creating virtual devices and scale this virtual devices with a set of real hardware is another possibility that allows to reduce the contention by using multiple hardwares and balance the virtual hardware call. This is possible thanks to the Virtualization environment. One example is the NIC, which can be related not only to one physical device, but several. 
 	
 	%talk about crash recovery model?
 	
