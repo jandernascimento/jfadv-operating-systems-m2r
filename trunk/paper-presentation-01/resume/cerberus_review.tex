@@ -99,7 +99,52 @@ following mechanisms.
    Cerberus implements a resource-sharing layer in both the VMM and
    operating systems.
 
+	\section{Process spawning} 
+	
+	Since in Cerberus we are talking about several operating system running a single application, this would spawn several processes, but the semantics of single application the idea of \emph{super process} is used to unify the different spawned process along those different machines.
+	
+	Spawning a process in a different operating system first requires that the OS create a new process it-self, and then retrieves the last \emph{checkpoint} stores in the \emph{share memory}. 
+	
+	It is for certain heavier to create several threads remotely than locally, but Cerberus offers a mechanism to reduced by using the \emph{parallel fork / clone} which allows to create simultaneously processes/threads in different VMs.	
+	
+	Maintaining the consistency between the processes (\emph{subprocesses}) is done by propagating the changes in the \emph{memory mapping} of one OS the the other OSes, which is achieved by replicating mapping and unmapping request.
+	
+	The entry point to allow Cerberus to interact and manage process without design a new operating system is to intercept \textit{system calls} that manipulates the process informations, such as identity, creating, killing, process affinity. So the system call is intercepted, the arguments are translated by Cerberus and then the operation is dispatched to the required OS. %marshals before returning, how to say that?
+	
+	Since the processes created is differents OS - other than the one that requested the process creation - are completely segregated by the OSes, a mechanism should be adopted to keep the relation ship among then, the solution is to keep a global mapping of the \emph{virtual process ID} (pid abstraction created by Cerberus) and use this ID to record the relationship.
+	
+	So several other informations are kept in a shared manner like a \emph{page table}, \emph{inode table}. But in order not too overload the communication channel with unnecessary message a \emph{hierarchical massage-passing mechanism} is used.
+	
+	\section{Fallback mechanism / Resource sharing}
+	
+	In an example of a multi-threaded application, a memory sector is shared among those threads (which does not happen in case of forked process, where the relationship dependency is minimal), Cerberus share this memory sector by maintaining a global list of \emph{shared address ranges}.
+	
+	%should talk about pagefault in here
+	
+	Sharing efficiently the page table is a keypoint, to provided that the \emph{address range abstraction} is used to share the page table by using multiple levels, that are identified by the address range. The level of sharing which should be adopted is chosen by the size of the address range.
+	
+	%{talk about it subprocess} 
+	
+	\section{File sharing}
+	
+	Nowadays, the file sharing mechanisms, specifically NFS, add an undesired contention in the network, first for been centralized and secondly by adding overhead for using the network file system. %input the value of how slow is NFS compared with other filesystems?
+	
+	Fortunately most of multi-threaded application required only exclusive access to those resources, but for those where this is a requirement a hybrid approach is used. 
+
+	So by combining local and remote file access is possible to reduce the contention while maintain an acceptable performance file sharing. %what is acceptable performance file sharing???
+	
+	By creating an NFS-like interface application per say, the sharing mechanism allows to access a file directly when it is available locally, and request for the \emph{CFS Server} when the file is only available remotely.
+
+	Since the access hides the the complexity of having several OSes by representing the data in a single way, this creates a problem for the list operation, which would required to dispatch the listing information to every OS involved and wait for the results before return to the user.
+	
+	%talk about crash recovery model?
+	
+	
+	
+
 \end{itemize}
+
+
 
 \end{document}
 
