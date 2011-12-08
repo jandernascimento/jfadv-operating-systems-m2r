@@ -175,9 +175,26 @@ following mechanisms.
 	\item signaling the target process and execute the sender can be done in parallel
 	\end{itemize}
 	
+	Some numbers:
+	\begin{itemize}
+	\item Creating process (clone or fork) takes about 11 $\mu S$ %the author considers acceptable, why!?
+	\item Local file access, reading first 10 bytes of a file using CFS takes 6.52 $mu S$, compared with 6.47 $mu S$ using pure Xen-linux
+	\item Remote file access, reading can take up to 17.81 $\mu S$
+	\item Sending and Receiving packages through Cerberus network system was 25\% faster than the native linux system
+
+	\end{itemize}	
 \end{itemize}
 
+%Problems:
+%-author does not show the performance of CFS in writing, and seeking a file
+%-sometimes redundant distributes  replicated kernels
+%-centralized load balance
+%-acceptable performance
+%-code not available
 
+%informations to gather
+%-how many lines of code the actual kernel has?
+%-how many system calls exists in POSIX?
 
 \end{document}
 
