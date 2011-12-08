@@ -181,6 +181,8 @@ following mechanisms.
 	\item Local file access, reading first 10 bytes of a file using CFS takes 6.52 $mu S$, compared with 6.47 $mu S$ using pure Xen-linux
 	\item Remote file access, reading can take up to 17.81 $\mu S$
 	\item Sending and Receiving packages through Cerberus network system was 25\% faster than the native linux system
+	
+	Cerberus performed worst than native system when submitted to a low number of cores, but the performance increases dramatically as the number of core grows (in order of 37\%).
 
 	\end{itemize}	
 \end{itemize}
