@@ -139,11 +139,42 @@ following mechanisms.
 	
 	Creating virtual devices and scale this virtual devices with a set of real hardware is another possibility that allows to reduce the contention by using multiple hardwares and balance the virtual hardware call. This is possible thanks to the Virtualization environment. One example is the NIC, which can be related not only to one physical device, but several. 
 	
+	\section{Prototyping}
+	
+	Cerberus was implemented based on Xen shadow mode page table management. To reduce the number of changes required without giving as much as possible support for already implemented application, the POSIX implementation was changed, but only a subset of it, enough to support MapReduce applications, MemCached and benchmarks for filesystems.
+	
+	\subsection{Message passing}
+	
+	Cerberus create automatically in every OSes, present in the cluster, a point-to-point communication channel among every VM. The events are put in a queue and after that they can be processed in FIFO order.
+	
 	%talk about crash recovery model?
 	
+	\subsection{Memory management}
 	
+	For sharing page table, a scheme called Xen direct mode was implemented - which supports paravirtualization as well - but this required much more changes in the guest OS. As this implementation show to be not efficient the it was used shadow page tables and P2M instead.
 	
+	Before a VM handles system calls related to memory management, it will be forced to synchronize with the other VMs.
+	
+	\subsection{Cerberos file system}
+	
+	The control of the file system is kept based on local inodes, remote inodes and dentry. Local inode represents the file that can be accessed directly, which is located in the same VM domain of the requester. Remove inode receives the owner domain, doing so, the VM is capable to tell where should request this file from. Dentry is an organization inode, which can agregate several inodes.
 
+	\subsection{System call virtualization}
+
+	Two types of system calls must be virtualized: local and global state information access.
+	
+	The local state access does not offer any problem nor require any intervention by Cerberus, but the ones that modify a global state of the system need to be translated by Cerberus.
+	
+	Only 35 System calls from POSIX had to be implemented. In total 1800 lines of code were added to Xen, plus a kernel module of 8800 lines of code %35 of how many!?
+	
+	\section{Results}
+	
+	By the ping pong is possible to check that virtualization adds some overhead to the mechanism, but even though it is faster send a signal across VMs then sending local signals. This happens for two reasons.
+	\begin{itemize}
+	\item The inter-VM messaging passing is efficient
+	\item signaling the target process and execute the sender can be done in parallel
+	\end{itemize}
+	
 \end{itemize}
 
 
