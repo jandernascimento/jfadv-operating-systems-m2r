@@ -109,7 +109,7 @@ following mechanisms.
 	
 	Maintaining the consistency between the processes (\emph{subprocesses}) is done by propagating the changes in the \emph{memory mapping} of one OS the the other OSes, which is achieved by replicating mapping and unmapping request.
 	
-	The entry point to allow Cerberus to interact and manage process without design a new operating system is to intercept \textit{system calls} that manipulates the process informations, such as identity, creating, killing, process affinity. So the system call is intercepted, the arguments are translated by Cerberus and then the operation is dispatched to the required OS. %marshals before returning, how to say that?
+	The entry point to allow Cerberus to interact and manage process without design a new operating system is to intercept \textit{system calls} that manipulates the process informations, such as identity, creating, killing, process affinity. So the system call is intercepted, the arguments are translated by Cerberus and then the operation is dispatched to the required OS. %[4]
 	
 	Since the processes created is different OSes - other than the one that requested the process creation - are completely segregated by the OSes, a mechanism should be adopted to keep the relation ship among then, the solution is to keep a global mapping of the \emph{virtual process ID} (pid abstraction created by Cerberus) and use this ID to record the relationship.
 	
@@ -127,9 +127,9 @@ following mechanisms.
 	
 	\section{File sharing}
 	
-	Nowadays, the file sharing mechanisms, specifically NFS, add an undesired contention in the network, first for been centralized and secondly by adding overhead for using the network file system. %input the value of how slow is NFS compared with other filesystems?
+	Nowadays, the file sharing mechanisms, specifically NFS, add an undesired contention in the network, first for been centralized and secondly by adding overhead for using the network file system. %[3]
 	
-	Fortunately most of multi-threaded application required only exclusive access to those resources, but for those where this is a requirement a hybrid approach is used. So by combining local and remote file access is possible to reduce the contention while maintain an acceptable performance file sharing. %what is acceptable performance file sharing???
+	Fortunately most of multi-threaded application required only exclusive access to those resources, but for those where this is a requirement a hybrid approach is used. So by combining local and remote file access is possible to reduce the contention while maintain an acceptable performance file sharing. %[2]
 	
 	By creating an NFS-like interface application per say, the sharing mechanism allows to access a file directly when it is available locally, and request for the \emph{CFS Server} when the file is only available remotely.
 
@@ -145,7 +145,7 @@ following mechanisms.
 	
 	Cerberus create automatically in every OSes, present in the cluster, a point-to-point communication channel among every VM. The events are put in a queue and after that they can be processed in FIFO order.
 	
-	%talk about crash recovery model?
+	%[1]
 	
 	\subsection{Memory management}
 	
@@ -194,6 +194,12 @@ following mechanisms.
 %informations to gather
 %-how many lines of code the actual kernel has?
 %-how many system calls exists in POSIX?
+
+%Absence:
+%talk about crash recovery model? [1]
+%what is acceptable performance file sharing??? [2]
+%input the value of how slow is NFS compared with other filesystems? [3]
+%marshals before returning, how to say that? [4]
 
 \end{document}
 
