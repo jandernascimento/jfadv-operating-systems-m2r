@@ -111,7 +111,7 @@ following mechanisms.
 	
 	The entry point to allow Cerberus to interact and manage process without design a new operating system is to intercept \textit{system calls} that manipulates the process informations, such as identity, creating, killing, process affinity. So the system call is intercepted, the arguments are translated by Cerberus and then the operation is dispatched to the required OS. %marshals before returning, how to say that?
 	
-	Since the processes created is differents OS - other than the one that requested the process creation - are completely segregated by the OSes, a mechanism should be adopted to keep the relation ship among then, the solution is to keep a global mapping of the \emph{virtual process ID} (pid abstraction created by Cerberus) and use this ID to record the relationship.
+	Since the processes created is different OSes - other than the one that requested the process creation - are completely segregated by the OSes, a mechanism should be adopted to keep the relation ship among then, the solution is to keep a global mapping of the \emph{virtual process ID} (pid abstraction created by Cerberus) and use this ID to record the relationship.
 	
 	So several other informations are kept in a shared manner like a \emph{page table}, \emph{inode table}. But in order not too overload the communication channel with unnecessary message a \emph{hierarchical massage-passing mechanism} is used.
 	
@@ -129,9 +129,7 @@ following mechanisms.
 	
 	Nowadays, the file sharing mechanisms, specifically NFS, add an undesired contention in the network, first for been centralized and secondly by adding overhead for using the network file system. %input the value of how slow is NFS compared with other filesystems?
 	
-	Fortunately most of multi-threaded application required only exclusive access to those resources, but for those where this is a requirement a hybrid approach is used. 
-
-	So by combining local and remote file access is possible to reduce the contention while maintain an acceptable performance file sharing. %what is acceptable performance file sharing???
+	Fortunately most of multi-threaded application required only exclusive access to those resources, but for those where this is a requirement a hybrid approach is used. So by combining local and remote file access is possible to reduce the contention while maintain an acceptable performance file sharing. %what is acceptable performance file sharing???
 	
 	By creating an NFS-like interface application per say, the sharing mechanism allows to access a file directly when it is available locally, and request for the \emph{CFS Server} when the file is only available remotely.
 
@@ -161,7 +159,7 @@ following mechanisms.
 
 	\subsection{System call virtualization}
 
-	Two types of system calls must be virtualized: local and global state information access.
+	There are mainly two types of system calls: local and global state information access.
 	
 	The local state access does not offer any problem nor require any intervention by Cerberus, but the ones that modify a global state of the system need to be translated by Cerberus.
 	
@@ -175,16 +173,15 @@ following mechanisms.
 	\item signaling the target process and execute the sender can be done in parallel
 	\end{itemize}
 	
-	Some numbers:
+	Here are some numbers that summarize the result of this paper:
 	\begin{itemize}
 	\item Creating process (clone or fork) takes about 11 $\mu S$ %the author considers acceptable, why!?
 	\item Local file access, reading first 10 bytes of a file using CFS takes 6.52 $mu S$, compared with 6.47 $mu S$ using pure Xen-linux
 	\item Remote file access, reading can take up to 17.81 $\mu S$
 	\item Sending and Receiving packages through Cerberus network system was 25\% faster than the native linux system
-	
-	Cerberus performed worst than native system when submitted to a low number of cores, but the performance increases dramatically as the number of core grows (in order of 37\%).
+	\item Cerberus performed worst than native system when submitted to a low number of cores, but the performance increases dramatically as the number of core grows (in order of 37\%).
+	\end{itemize}
 
-	\end{itemize}	
 \end{itemize}
 
 %Problems:
