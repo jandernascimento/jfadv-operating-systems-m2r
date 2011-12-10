@@ -53,7 +53,7 @@ approaches to solve this problem:
 \end{enumerate*}
 
 Cerberus uses a middle ground between these two trends, taking advantage
-of both solutions' ideas.
+of both solutions.
 
 The first main idea used by Cerberus is an extension of traditional VMMs
 with support for efficient resource sharing among the clustered
@@ -73,7 +73,7 @@ manage the spawned processes/threads.
 
 \section{Overview of Cerberus}
 
-As was metioned before, one of the main contributions of Cerberus is the
+As was mentioned before, one of the main contributions of Cerberus is the
 modification of VMM to allow one application run on several VMs
 simultaneously. This means that processes/threads belonging to one
 shared-memory application now run on multiple operating systems. To
@@ -101,55 +101,49 @@ following mechanisms.
 
 	\section{Process spawning} 
 	
-	Since in Cerberus we are talking about several operating system running a single application, this would spawn several processes, but the semantics of single application the idea of \emph{super process} is used to unify the different spawned process along those different machines.
+	In order to split a process into several machines, Cerberus must spawn process creation request to the target VMs. Although, it is necessary to keep the semantics of those processes unified for sake of process management, this entity is called \emph{Super Process}.
 	
-	Spawning a process in a different operating system first requires that the OS create a new process it-self, and then retrieves the last \emph{checkpoint} stores in the \emph{share memory}. 
+	Spawning such processes require the parent OS to create a new process. The state of this process is saved in the shared memory area(called \emph{checkpoint}), at this point, the target OS is able to spawn a new process and restore the state from the shared memory area. 
 	
-	It is for certain heavier to create several threads remotely than locally, but Cerberus offers a mechanism to reduced by using the \emph{parallel fork / clone} which allows to create simultaneously processes/threads in different VMs.	
+	For a better performance, Cerberus benefits from parallel fork and parallel clone of processes, which allow create those processes simultaneously over different OSes.	
+
+	After a process has been created, it is required to keep the memory in a consistent state, so the process can interact as if they were working in the same OS. Cerberus achieved that by propagating memory management system calls (e.g. mapping and unmapping operations) into the target OS(es).
 	
-	Maintaining the consistency between the processes (\emph{subprocesses}) is done by propagating the changes in the \emph{memory mapping} of one OS the the other OSes, which is achieved by replicating mapping and unmapping request.
+	Cerberus is able to modify the behavior of the OS without changing the whole OS by intercepting the basic system calls, mainly the ones relates with memory management and IO. So the process sequence is system call interception, translation and dispatch to the target OS. %[4]
 	
-	The entry point to allow Cerberus to interact and manage process without design a new operating system is to intercept \textit{system calls} that manipulates the process informations, such as identity, creating, killing, process affinity. So the system call is intercepted, the arguments are translated by Cerberus and then the operation is dispatched to the required OS. %[4]
+	After dispatching the creation of several processes across different OSes, Cerberus needs a mechanism to track the relation between each of those processes. Which leads Cerberus to globally map virtual processes id. %?? 
 	
-	Since the processes created is different OSes - other than the one that requested the process creation - are completely segregated by the OSes, a mechanism should be adopted to keep the relation ship among then, the solution is to keep a global mapping of the \emph{virtual process ID} (pid abstraction created by Cerberus) and use this ID to record the relationship.
+	In order to allow file sharing, basic security, page fault management and mechanism, some other informations must be shared, like: \emph{page table}, \emph{inode table}. 
 	
-	So several other informations are kept in a shared manner like a \emph{page table}, \emph{inode table}. But in order not too overload the communication channel with unnecessary message a \emph{hierarchical massage-passing mechanism} is used.
+	The entire communication among the VMs are done through message-passing. Thus, its needed a efficient way of communicating, and reducing as much as possible the network traffic, this is achieved by \emph{hierarchical massage-passing mechanism}, which selects the messages that must go through the physical NIC, all other messages are simple handled by the VM and transmitted directly to the other OS
 	
-	\section{Fallback mechanism / Resource sharing}
+	\section{Resource sharing}
 	
-	In an example of a multi-threaded application, a memory sector is shared among those threads (which does not happen in case of forked process, where the relationship dependency is minimal), Cerberus share this memory sector by maintaining a global list of \emph{shared address ranges}.
+	Multiprocess applications regularly share minimal amount of information, Thus this does not is not a concern. Although, multi-threaded applications share a large amount of memory segment (process table, file descriptors, etc) and require an efficient sharing scheme to allow those threads to access the resource without creating a contention. %Cerberus share this memory sector by maintaining a global list of \emph{shared address ranges}.
 	
 	%should talk about pagefault in here
 	
-	Sharing efficiently the page table is a keypoint, to provided that the \emph{address range abstraction} is used to share the page table by using multiple levels, that are identified by the address range. The level of sharing which should be adopted is chosen by the size of the address range.
+	%Sharing efficiently the page table is a keypoint, to provided that the \emph{address range abstraction} is used to share the page table by using multiple levels, that are identified by the address range. The level of sharing which should be adopted is chosen by the size of the address range.
 	
 	%{talk about it subprocess} 
 	
-	\section{File sharing}
+	Files could be shared among different OSes using Network File System, but this adds a lot of overhead due to its intrinsic centralized characteristics.
 	
-	Nowadays, the file sharing mechanisms, specifically NFS, add an undesired contention in the network, first for been centralized and secondly by adding overhead for using the network file system. %[3]
+	The solution is to use a mixture between local and remote file access, when the OS needs to access a resource that is located in the current OS partition, the application can simply read the file directly, without requiring Cerberus intervention. Otherwise, the request access is handled by Cerberus File System Client.%[3] %[2]
 	
-	Fortunately most of multi-threaded application required only exclusive access to those resources, but for those where this is a requirement a hybrid approach is used. So by combining local and remote file access is possible to reduce the contention while maintain an acceptable performance file sharing. %[2]
+	Since file access in such environment hides the complexity of having several OSes underneath, this creates a problem in a simple operation like listing, which requires to dispatch the listing information to every OS involved and wait for the results before marshals back to the user, but this is not considered critical since list operation is not common for high performance applications. %references for that?
 	
-	By creating an NFS-like interface application per say, the sharing mechanism allows to access a file directly when it is available locally, and request for the \emph{CFS Server} when the file is only available remotely.
-
-	Since the access hides the complexity of having several OSes in the backend, this creates a problem for a simple list operation, which would required to dispatch the listing information to every OS involved and wait for the results before return to the user.
-	
-	Creating virtual devices and scale this virtual devices with a set of real hardware is another possibility that allows to reduce the contention by using multiple hardwares and balance the virtual hardware call. This is possible thanks to the Virtualization environment. One example is the NIC, which can be related not only to one physical device, but several. 
+	Creating virtual devices and scale this virtual devices with a set of real hardware is another possibility that allows to reduce the contention. This is done by using multiple hardwares and balancing the virtual device call through different physical devices. This is possible thanks to the VM environment. One example happens with Network Interface Cards, in which a single virtual can be mapped to severed physical devices. 
 	
 	\section{Prototyping}
 	
-	Cerberus was implemented based on Xen shadow mode page table management. To reduce the number of changes required without giving as much as possible support for already implemented application, the POSIX implementation was changed, but only a subset of it, enough to support MapReduce applications, MemCached and benchmarks for filesystems.
-	
-	\subsection{Message passing}
-	
-	Cerberus create automatically in every OSes, present in the cluster, a point-to-point communication channel among every VM. The events are put in a queue and after that they can be processed in FIFO order.
-	
+	Cerberus was implemented based on Xen, re-implementing a subset of the POSIX calls. This gives support to other applications without having to re-implementing them. Applications for MapReduce, MemCached and benchmarking were deployed and used to obtain the results presented. Those application did not require any re-compilation to be supported by Cerberus.
+		
 	%[1]
 	
 	\subsection{Memory management}
 	
-	For sharing page table, a scheme called Xen direct mode was implemented - which supports paravirtualization as well - but this required much more changes in the guest OS. As this implementation show to be not efficient the it was used shadow page tables and P2M instead.
+	For an optimal memory access is necessary to share their page table. A scheme called Xen direct mode was implemented but would required more changes in the guest OS. Besides Xen direct was not as efficient as P2M.
 	
 	Before a VM handles system calls related to memory management, it will be forced to synchronize with the other VMs.
 	
@@ -161,11 +155,13 @@ following mechanisms.
 
 	There are mainly two types of system calls: local and global state information access.
 	
-	The local state access does not offer any problem nor require any intervention by Cerberus, but the ones that modify a global state of the system need to be translated by Cerberus.
+	The local state access does not offer any problem neither requires any intervention by Cerberus, but the ones that modify the global state of the system needs to be translated by Cerberus.
 	
 	Only 35 System calls from POSIX had to be implemented. In total 1800 lines of code were added to Xen, plus a kernel module of 8800 lines of code %35 of how many!?
 	
-	\section{Results}
+	\section{Evaluation}
+	
+	To evaluate the communication round trip, ping pong was used, which send a message to a target application and expects to receive the same message, the time the message take to return is the round trip time, this is used to measure the performance of the application.
 	
 	By the ping pong is possible to check that virtualization adds some overhead to the mechanism, but even though it is faster send a signal across VMs then sending local signals. This happens for two reasons.
 	\begin{itemize}
