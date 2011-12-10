@@ -1,0 +1,82 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[final]{pdfpages}
+
+\usetheme{Goettingen}%Warsaw}
+\usecolortheme{lily}
+\setbeamertemplate{footline}[page number]
+\title[A Case for Scaling Applications to Many-core with OS Clustering ]{A Case for Scaling Applications to Many-core with OS Clustering}
+\author{
+(reviewed by Oleg Iegorov and Jander Nascimento)}
+\institute{University Joseph Fourier}
+\date{\today}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Roadmap}
+    \tableofcontents%[currentsection,currentsubsection]
+  \end{frame}
+}
+
+%this is filled up with some sample code (we can remove it anytime)
+
+\section{Super process}
+
+	\begin{frame}{Transferring process}
+
+	\begin{itemize}
+	\item Create local process
+	\item Saves the state of the process
+	\item Request target VM to creates a process
+	\item Target VM create its own process
+	\item Target VM restores the state
+	\end{itemize}
+	
+	\end{frame}	
+	
+	\begin{frame}{Performance techniques}
+
+	\begin{itemize}
+	\item Only certain levels of the page tables are shared
+	\item Use domains to address page faults
+	\item Avoid conflicting by enforcing update memory state
+	\end{itemize}
+	
+	\end{frame}
+	
+		
+	\begin{frame}{Data exchange}
+	
+	\begin{itemize}	
+		\item Not common for multiprocess application
+		\item Very common for multi-threaded
+	\end{itemize}	
+		
+	\end{frame}
+
+	\begin{frame}{Fork and Clone}
+	
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.40]{img/cerberus-fork-clone}
+		\end{figure}	
+	
+	\end{frame}
+
+\section{Sharing file}
+	
+	Hybrid between local and remote file access.
+
+	Primitive security is added in meta nodes.
+
+\section{The prototype}
+
+\section{Evaluation}
+
+\end{document}
