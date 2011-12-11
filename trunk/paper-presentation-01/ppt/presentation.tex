@@ -26,6 +26,132 @@
 
 %this is filled up with some sample code (we can remove it anytime)
 
+\begin{frame}{Scaling Operating Systems For Many Cores}
+  Nowaday's tendencies:
+  \begin{itemize}
+    \item the number of CPU cores in a system increases;
+    \item parallel applications use fine-grained components;
+  \newline
+  \end{itemize}
+
+  \pause
+  \textbf{OS becomes a bottleneck!}
+  \newline
+  
+  \begin{center}
+    \includegraphics[scale=0.4]{bottleneck.png}
+  \end{center}
+\end{frame}
+
+
+
+
+\begin{frame}{Scaling Operating Systems For Many Cores}
+  Two main approaches:
+  \begin{enumerate}
+    \item designing new OSes
+      \begin{itemize}
+        \item distribute independent kernels on multiple cores;
+        \item reduce resource sharing \& improve data locality;
+      \end{itemize}
+    \item refining commodity kernels
+      \begin{itemize}
+        \item design new data structures to reduce the contention on
+          shared data structures;
+        \item \emph{interesting fact:} Linux kernel can efficiently scale to 48
+          cores!
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{OS clustering approach}
+  \only<1,2>{
+  New approach proposed by this paper: \textbf{OS clustering}
+  \begin{itemize}
+    \item cluster multiple OSes atop a VMM;
+    \item several OSes can serve one application;
+  \end{itemize}
+  }
+
+  \only<3>{
+  \begin{block}{Results}
+    \begin{itemize}
+      \item single OS manages fewer cores;
+      \item resource contention is mitigated.
+    \end{itemize}
+  \end{block}
+  }
+
+  \only<1>{
+  \begin{block}{Motivation}
+    \begin{enumerate}
+      \item commodity kernels scale well with small \# of CPU cores;
+      \item one VMM can efficiently consolidate multiple OSes;
+    \end{enumerate}
+  \end{block}
+  }
+
+  \only<2,3>{
+    \begin{center}
+      \includegraphics[scale=0.3]{overview.png}
+    \end{center}
+  }
+\end{frame}
+
+\begin{frame}[t]{What's next?}
+  The implemented system was called \textbf{Cerberus}
+  \newline 
+
+  \begin{itemize}
+    \item overview of Cerberus;
+    \item more implementation details;
+    \item evaluation results
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Overview of Cerberus architecture}
+  \begin{center}
+    \includegraphics[scale=0.3]{overview.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{System call virtualization}
+  Why it is needed?
+  \begin{itemize}
+    \item all syscalls should be intercepted;
+    \item allow processes/threads of one application to run on several
+      OSes;
+    \item transparent to the user (POSIX API)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{System call virtualization}
+  The notion of \textbf{SuperProcess}
+  \newline
+  \begin{center}
+    \includegraphics[scale=0.5]{SuperProcess.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{System call virtualization}
+  \begin{center}
+    \includegraphics[scale=0.4]{adv_architecture.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Resource Sharing}
+  \begin{itemize}
+    \item processes/threads of one application must share some
+      resources;
+    \item VMMs are designed to isolate VMs from each other;
+    \item \emph{resource sharing layer} must modify VMM's code
+  \end{itemize}
+  \begin{center}
+    \includegraphics[scale=0.3]{overview.png}
+  \end{center}
+\end{frame}
+
+
 \section{Process management}
 
 	\begin{frame}{Remote process}
