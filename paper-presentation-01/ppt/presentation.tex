@@ -26,16 +26,20 @@
 
 %this is filled up with some sample code (we can remove it anytime)
 
-\section{Super process}
+\section{Process management}
 
-	\begin{frame}{Transferring process}
+	\begin{frame}{Remote process}
+
+	\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.3]{img/cerberus-process-creation}
+	\end{figure}
 
 	\begin{itemize}
 	\item Create local process
 	\item Saves the state of the process
-	\item Request target VM to create a process
-	\item Target VM create its own process
-	\item Target VM restores the state
+	\item Request target OS to create a process
+	\item Target OS restores the state
 	\end{itemize}
 	
 	\end{frame}	
@@ -156,6 +160,13 @@
 
 \section{Conclusion}
 
-
+\section{Our evaluation}
+	Some negative points of the paper:
+	\begin{itemize}
+	\item Do not show the performance of CFS in operations like: writing and seeking
+	\item Do not explain how solve the problem of centralized load balance
+	\item Do not show the numbers for acceptable performance
+	\item Code is not available
+	\end{itemize}
 
 \end{document}
