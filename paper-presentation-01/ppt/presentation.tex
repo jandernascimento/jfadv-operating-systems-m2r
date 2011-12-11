@@ -145,7 +145,7 @@
 
 	\begin{frame}{Prototype}
 
-	Technical stuff:
+	Tech overview:
 	\begin{itemize}
 	\item based on Xen
 	\item Uses compare and swap to look for gaps
@@ -154,13 +154,22 @@
 	\item Using P2M
 	\end{itemize}
 	
+	Hardware overview
+	\begin{itemize}
+	\item AMD 48 cores
+	\item 4 network cards
+	\end{itemize}	
+		
 	\end{frame}
 
 \section{Evaluation}
 
-		
+	
 	
 \section{Our evaluation}
+
+	\begin{frame}{Downside}
+
 	Some negative points of the paper:
 	\begin{itemize}
 	\item Do not show the performance of CFS in operations like: writing and seeking
@@ -168,5 +177,7 @@
 	\item Do not show the numbers for acceptable performance
 	\item Code is not available
 	\end{itemize}
+
+	\end{frame}
 
 \end{document}
