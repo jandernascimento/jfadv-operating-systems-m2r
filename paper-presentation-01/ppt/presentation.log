@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.22)  11 DEC 2011 12:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.20)  12 DEC 2011 16:44
 entering extended mode
  %&-line parsing enabled.
 **presentation.tex
@@ -92,7 +92,7 @@ File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count102
 ))
 \Gin@req@height=\dimen119
@@ -519,7 +519,11 @@ Package: beamerbasenavigation 2007/01/28  (rcs-revision 1.36)
 (/usr/share/texmf/tex/latex/beamer/base/beamerbasetheorems.sty
 Package: beamerbasetheorems 2007/01/28  (rcs-revision 1.10)
 
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(/usr/share/texmf-texlive/tex/latex/translator/translator.sty
+Package: translator 2007/03/11 ver 1.00
+
+(/usr/share/texmf-texlive/tex/latex/translator/translator-language-mappings.tex
+)) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip49
 
@@ -1003,8 +1007,11 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 13.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 13.
- ABD: EveryShipout initializing macros
-(./presentation.nav)
+
+(/usr/share/texmf-texlive/tex/latex/translator/translator-theorem-dictionary-En
+glish.dict
+Dictionary: translator-theorem-dictionary, Language: English 
+) ABD: EveryShipout initializing macros (./presentation.nav)
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 (Font)              size <5> substituted on input line 17.
@@ -1015,16 +1022,16 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 [2
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 44.
+LaTeX Font Info:    Try loading font information for U+msa on input line 46.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 44.
+LaTeX Font Info:    Try loading font information for U+msb on input line 46.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<bottleneck.png, id=107, 465.74pt x 276.03125pt>
+<bottleneck.png, id=105, 465.74pt x 276.03125pt>
 File: bottleneck.png Graphic file (type png)
  <use bottleneck.png> [3
 
@@ -1037,14 +1044,14 @@ File: bottleneck.png Graphic file (type png)
 ] [6
 
 ]
-<overview.png, id=239, 720.6925pt x 539.01375pt>
+<overview.png, id=254, 720.6925pt x 539.01375pt>
 File: overview.png Graphic file (type png)
  <use overview.png> [7
 
  <./overview.png>]
 File: overview.png Graphic file (type png)
  <use overview.png>
-Overfull \vbox (3.83524pt too high) detected at line 99
+Overfull \vbox (3.83524pt too high) detected at line 101
  []
 
 [8
@@ -1055,16 +1062,16 @@ Overfull \vbox (3.83524pt too high) detected at line 99
 File: overview.png Graphic file (type png)
  <use overview.png> [10
 
-] [11
-
 ]
-<SuperProcess.png, id=395, 445.665pt x 227.85126pt>
+<SuperProcess.png, id=394, 445.665pt x 227.85126pt>
 File: SuperProcess.png Graphic file (type png)
  <use SuperProcess.png>
-[12
+[11
 
- <./SuperProcess.png>]
-<adv_architecture.png, id=427, 658.46pt x 527.9725pt>
+ <./SuperProcess.png>] [12
+
+]
+<adv_architecture.png, id=467, 658.46pt x 527.9725pt>
 File: adv_architecture.png Graphic file (type png)
 
 <use adv_architecture.png> [13
@@ -1074,7 +1081,7 @@ File: overview.png Graphic file (type png)
  <use overview.png>
 [14
 
-] <img/cerberus-process-creation.png, id=490, 767.86874pt x 439.6425pt>
+] <img/cerberus-process-creation.png, id=539, 767.86874pt x 439.6425pt>
 File: img/cerberus-process-creation.png Graphic file (type png)
 
 <use img/cerberus-process-creation.png> [15
@@ -1082,7 +1089,7 @@ File: img/cerberus-process-creation.png Graphic file (type png)
  <./img/cerberus-process-creation.png>]
 File: img/cerberus-process-creation.png Graphic file (type png)
  <use img/cerberus-process-creation.png>
-Overfull \hbox (74.38678pt too wide) in paragraph at lines 178--178
+Overfull \hbox (74.38678pt too wide) in paragraph at lines 186--186
  [] 
  []
 
@@ -1093,19 +1100,19 @@ Overfull \hbox (74.38678pt too wide) in paragraph at lines 178--178
 ] [18
 
 ]
-<img/cerberus-architecture.png, id=609, 527.9725pt x 426.59375pt>
+<img/cerberus-architecture.png, id=672, 527.9725pt x 426.59375pt>
 File: img/cerberus-architecture.png Graphic file (type png)
 
 <use img/cerberus-architecture.png> [19
 
  <./img/cerberus-architecture.png (PNG copy)>] <img/syscall-virtualization.png,
- id=642, 492.84125pt x 376.40625pt>
+ id=709, 492.84125pt x 376.40625pt>
 File: img/syscall-virtualization.png Graphic file (type png)
 
 <use img/syscall-virtualization.png> [20
 
  <./img/syscall-virtualization.png (PNG copy)>] <img/cerberus-fork-clone.png, i
-d=674, 641.39626pt x 366.36874pt>
+d=744, 641.39626pt x 366.36874pt>
 File: img/cerberus-fork-clone.png Graphic file (type png)
 
 <use img/cerberus-fork-clone.png> [21
@@ -1114,7 +1121,7 @@ File: img/cerberus-fork-clone.png Graphic file (type png)
 
 ] [23
 
-] <img/cerberus-cfs.png, id=768, 343.2825pt x 379.4175pt>
+] <img/cerberus-cfs.png, id=850, 343.2825pt x 379.4175pt>
 File: img/cerberus-cfs.png Graphic file (type png)
 
 <use img/cerberus-cfs.png> [24
@@ -1141,10 +1148,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 13518 strings out of 495061
- 237112 string characters out of 1182621
- 321491 words of memory out of 3000000
- 16268 multiletter control sequences out of 15000+50000
+ 13731 strings out of 495061
+ 240871 string characters out of 1182621
+ 324286 words of memory out of 3000000
+ 16466 multiletter control sequences out of 15000+50000
  11268 words of font info for 41 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  45i,15n,61p,347b,599s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1155,9 +1162,11 @@ type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/cm/cmssi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/sym
 bols/msam7.pfb>
-Output written on presentation.pdf (26 pages, 578974 bytes).
+Output written on presentation.pdf (26 pages, 600020 bytes).
 PDF statistics:
- 901 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
- 124 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 995 PDF objects out of 1000 (max. 8388607)
+ 62 named destinations out of 1000 (max. 500000)
+ 84 words of extra memory for PDF output out of 10000 (max. 10000000)
+
+
 
