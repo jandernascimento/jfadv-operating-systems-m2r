@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.20)  12 DEC 2011 19:00
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.20)  12 DEC 2011 19:30
 entering extended mode
  %&-line parsing enabled.
 **presentation.tex
@@ -1031,7 +1031,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 46.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<bottleneck.png, id=144, 465.74pt x 276.03125pt>
+<bottleneck.png, id=148, 465.74pt x 276.03125pt>
 File: bottleneck.png Graphic file (type png)
  <use bottleneck.png> [3
 
@@ -1044,7 +1044,7 @@ File: bottleneck.png Graphic file (type png)
 ] [6
 
 ]
-<overview.png, id=296, 720.6925pt x 539.01375pt>
+<overview.png, id=300, 720.6925pt x 539.01375pt>
 File: overview.png Graphic file (type png)
  <use overview.png> [7
 
@@ -1063,7 +1063,7 @@ File: overview.png Graphic file (type png)
  <use overview.png> [10
 
 ]
-<SuperProcess.png, id=439, 445.665pt x 227.85126pt>
+<SuperProcess.png, id=443, 445.665pt x 227.85126pt>
 File: SuperProcess.png Graphic file (type png)
  <use SuperProcess.png>
 [11
@@ -1071,7 +1071,7 @@ File: SuperProcess.png Graphic file (type png)
  <./SuperProcess.png>] [12
 
 ]
-<adv_architecture.png, id=513, 658.46pt x 527.9725pt>
+<adv_architecture.png, id=517, 658.46pt x 527.9725pt>
 File: adv_architecture.png Graphic file (type png)
 
 <use adv_architecture.png> [13
@@ -1081,7 +1081,7 @@ File: overview.png Graphic file (type png)
  <use overview.png>
 [14
 
-] <img/cerberus-process-creation.png, id=586, 767.86874pt x 439.6425pt>
+] <img/cerberus-process-creation.png, id=590, 767.86874pt x 439.6425pt>
 File: img/cerberus-process-creation.png Graphic file (type png)
 
 <use img/cerberus-process-creation.png>
@@ -1112,14 +1112,14 @@ File: img/cerberus-process-creation.png Graphic file (type png)
 <use img/cerberus-process-creation.png> [19
 
 ]
-<img/cerberus-fork-clone.png, id=758, 641.39626pt x 366.36874pt>
+<img/cerberus-fork-clone.png, id=762, 641.39626pt x 366.36874pt>
 File: img/cerberus-fork-clone.png Graphic file (type png)
 
 <use img/cerberus-fork-clone.png> [20
 
  <./img/cerberus-fork-clone.png (PNG copy)>] [21
 
-] <img/syscall-virtualization.png, id=831, 492.84125pt x 376.40625pt>
+] <img/syscall-virtualization.png, id=835, 492.84125pt x 376.40625pt>
 File: img/syscall-virtualization.png Graphic file (type png)
 
 <use img/syscall-virtualization.png> [22
@@ -1133,7 +1133,7 @@ File: img/syscall-virtualization.png Graphic file (type png)
 ] [26
 
 ]
-<img/cerberus-cfs.png, id=1011, 343.2825pt x 379.4175pt>
+<img/cerberus-cfs.png, id=1015, 343.2825pt x 379.4175pt>
 File: img/cerberus-cfs.png Graphic file (type png)
 
 <use img/cerberus-cfs.png> [27
@@ -1148,7 +1148,7 @@ File: img/cerberus-cfs.png Graphic file (type png)
 ] [31
 
 ]
-<img/cerberus-webserver.png, id=1192, 514.92375pt x 298.11375pt>
+<img/cerberus-webserver.png, id=1196, 514.92375pt x 298.11375pt>
 File: img/cerberus-webserver.png Graphic file (type png)
 
 <use img/cerberus-webserver.png>
@@ -1179,10 +1179,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 13773 strings out of 495061
- 241290 string characters out of 1182621
+ 13774 strings out of 495061
+ 241303 string characters out of 1182621
  324286 words of memory out of 3000000
- 16492 multiletter control sequences out of 15000+50000
+ 16493 multiletter control sequences out of 15000+50000
  12516 words of font info for 46 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  45i,15n,61p,347b,599s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1193,9 +1193,9 @@ type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/cm/cmssi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/sym
 bols/msam7.pfb>
-Output written on presentation.pdf (34 pages, 650309 bytes).
+Output written on presentation.pdf (34 pages, 650548 bytes).
 PDF statistics:
- 1341 PDF objects out of 1440 (max. 8388607)
+ 1344 PDF objects out of 1440 (max. 8388607)
  78 named destinations out of 1000 (max. 500000)
- 156 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 164 words of extra memory for PDF output out of 10000 (max. 10000000)
 
