@@ -1,6 +1,11 @@
 \beamer@endinputifotherversion {3.07pt}
-\beamer@sectionintoc {1}{Process management}{15}{0}{1}
-\beamer@sectionintoc {2}{Sharing file}{22}{0}{2}
-\beamer@sectionintoc {3}{The prototype}{25}{0}{3}
-\beamer@sectionintoc {4}{Evaluation}{26}{0}{4}
-\beamer@sectionintoc {5}{Our evaluation}{26}{0}{5}
+\beamer@sectionintoc {1}{Scaling Operating Systems For Many Cores}{3}{0}{1}
+\beamer@sectionintoc {2}{OS clustering approach}{6}{0}{2}
+\beamer@sectionintoc {3}{Overview of Cerberus architecture}{10}{0}{3}
+\beamer@sectionintoc {4}{System call virtualization}{11}{0}{4}
+\beamer@sectionintoc {5}{Resource Sharing}{14}{0}{5}
+\beamer@sectionintoc {6}{Process management}{15}{0}{6}
+\beamer@sectionintoc {7}{Sharing file}{22}{0}{7}
+\beamer@sectionintoc {8}{The prototype}{25}{0}{8}
+\beamer@sectionintoc {9}{Evaluation}{26}{0}{9}
+\beamer@sectionintoc {10}{Our evaluation}{26}{0}{10}

@@ -3,62 +3,77 @@
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
-\headcommand {\slideentry {0}{0}{3}{3/4}{}{0}}
+\headcommand {\sectionentry {1}{Scaling Operating Systems For Many Cores}{3}{Scaling Operating Systems For Many Cores}{0}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\slideentry {1}{0}{3}{3/4}{}{0}}
 \headcommand {\beamer@framepages {3}{4}}
-\headcommand {\slideentry {0}{0}{4}{5/5}{}{0}}
+\headcommand {\slideentry {1}{0}{4}{5/5}{}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\slideentry {0}{0}{5}{6/8}{}{0}}
+\headcommand {\sectionentry {2}{OS clustering approach}{6}{OS clustering approach}{0}}
+\headcommand {\beamer@sectionpages {3}{5}}
+\headcommand {\beamer@subsectionpages {3}{5}}
+\headcommand {\slideentry {2}{0}{5}{6/8}{}{0}}
 \headcommand {\beamer@framepages {6}{8}}
-\headcommand {\slideentry {0}{0}{6}{9/9}{}{0}}
+\headcommand {\slideentry {2}{0}{6}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {0}{0}{7}{10/10}{}{0}}
+\headcommand {\sectionentry {3}{Overview of Cerberus architecture}{10}{Overview of Cerberus architecture}{0}}
+\headcommand {\beamer@sectionpages {6}{9}}
+\headcommand {\beamer@subsectionpages {6}{9}}
+\headcommand {\slideentry {3}{0}{7}{10/10}{}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\slideentry {0}{0}{8}{11/11}{}{0}}
+\headcommand {\sectionentry {4}{System call virtualization}{11}{System call virtualization}{0}}
+\headcommand {\beamer@sectionpages {10}{10}}
+\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\slideentry {4}{0}{8}{11/11}{}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {0}{0}{9}{12/12}{}{0}}
+\headcommand {\slideentry {4}{0}{9}{12/12}{}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {0}{0}{10}{13/13}{}{0}}
+\headcommand {\slideentry {4}{0}{10}{13/13}{}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {0}{0}{11}{14/14}{}{0}}
+\headcommand {\sectionentry {5}{Resource Sharing}{14}{Resource Sharing}{0}}
+\headcommand {\beamer@sectionpages {11}{13}}
+\headcommand {\beamer@subsectionpages {11}{13}}
+\headcommand {\slideentry {5}{0}{11}{14/14}{}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\sectionentry {1}{Process management}{15}{Process management}{0}}
-\headcommand {\beamer@sectionpages {1}{14}}
-\headcommand {\beamer@subsectionpages {1}{14}}
-\headcommand {\slideentry {1}{0}{12}{15/15}{}{0}}
+\headcommand {\sectionentry {6}{Process management}{15}{Process management}{0}}
+\headcommand {\beamer@sectionpages {14}{14}}
+\headcommand {\beamer@subsectionpages {14}{14}}
+\headcommand {\slideentry {6}{0}{12}{15/15}{}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {1}{0}{13}{16/16}{}{0}}
+\headcommand {\slideentry {6}{0}{13}{16/16}{}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {1}{0}{14}{17/17}{}{0}}
+\headcommand {\slideentry {6}{0}{14}{17/17}{}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {1}{0}{15}{18/18}{}{0}}
+\headcommand {\slideentry {6}{0}{15}{18/18}{}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {1}{0}{16}{19/19}{}{0}}
+\headcommand {\slideentry {6}{0}{16}{19/19}{}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {1}{0}{17}{20/20}{}{0}}
+\headcommand {\slideentry {6}{0}{17}{20/20}{}{0}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {1}{0}{18}{21/21}{}{0}}
+\headcommand {\slideentry {6}{0}{18}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\sectionentry {2}{Sharing file}{22}{Sharing file}{0}}
+\headcommand {\sectionentry {7}{Sharing file}{22}{Sharing file}{0}}
 \headcommand {\beamer@sectionpages {15}{21}}
 \headcommand {\beamer@subsectionpages {15}{21}}
-\headcommand {\slideentry {2}{0}{19}{22/22}{}{0}}
+\headcommand {\slideentry {7}{0}{19}{22/22}{}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\slideentry {2}{0}{20}{23/23}{}{0}}
+\headcommand {\slideentry {7}{0}{20}{23/23}{}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {2}{0}{21}{24/24}{}{0}}
+\headcommand {\slideentry {7}{0}{21}{24/24}{}{0}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\sectionentry {3}{The prototype}{25}{The prototype}{0}}
+\headcommand {\sectionentry {8}{The prototype}{25}{The prototype}{0}}
 \headcommand {\beamer@sectionpages {22}{24}}
 \headcommand {\beamer@subsectionpages {22}{24}}
-\headcommand {\slideentry {3}{0}{22}{25/25}{}{0}}
+\headcommand {\slideentry {8}{0}{22}{25/25}{}{0}}
 \headcommand {\beamer@framepages {25}{25}}
-\headcommand {\sectionentry {4}{Evaluation}{26}{Evaluation}{0}}
+\headcommand {\sectionentry {9}{Evaluation}{26}{Evaluation}{0}}
 \headcommand {\beamer@sectionpages {25}{25}}
 \headcommand {\beamer@subsectionpages {25}{25}}
-\headcommand {\sectionentry {5}{Our evaluation}{26}{Our evaluation}{0}}
+\headcommand {\sectionentry {10}{Our evaluation}{26}{Our evaluation}{0}}
 \headcommand {\beamer@sectionpages {26}{25}}
 \headcommand {\beamer@subsectionpages {26}{25}}
-\headcommand {\slideentry {5}{0}{23}{26/26}{}{0}}
+\headcommand {\slideentry {10}{0}{23}{26/26}{}{0}}
 \headcommand {\beamer@framepages {26}{26}}
 \headcommand {\beamer@partpages {1}{26}}
 \headcommand {\beamer@subsectionpages {26}{26}}

@@ -26,6 +26,8 @@
 
 %this is filled up with some sample code (we can remove it anytime)
 
+\section{Scaling Operating Systems For Many Cores}
+
 \begin{frame}{Scaling Operating Systems For Many Cores}
   Nowaday's tendencies:
   \begin{itemize}
@@ -42,8 +44,6 @@
     \includegraphics[scale=0.4]{bottleneck.png}
   \end{center}
 \end{frame}
-
-
 
 
 \begin{frame}{Scaling Operating Systems For Many Cores}
@@ -63,6 +63,8 @@
       \end{itemize}
   \end{enumerate}
 \end{frame}
+
+\section{OS clustering approach}
 
 \begin{frame}[t]{OS clustering approach}
   \only<1,2>{
@@ -109,9 +111,21 @@
   \end{itemize}
 \end{frame}
 
+\section{Overview of Cerberus architecture}
+
 \begin{frame}{Overview of Cerberus architecture}
   \begin{center}
     \includegraphics[scale=0.3]{overview.png}
+  \end{center}
+\end{frame}
+
+\section{System call virtualization}
+
+\begin{frame}[t]{System call virtualization}
+  The notion of \textbf{SuperProcess}
+  \newline
+  \begin{center}
+    \includegraphics[scale=0.5]{SuperProcess.png}
   \end{center}
 \end{frame}
 
@@ -125,19 +139,13 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{System call virtualization}
-  The notion of \textbf{SuperProcess}
-  \newline
-  \begin{center}
-    \includegraphics[scale=0.5]{SuperProcess.png}
-  \end{center}
-\end{frame}
-
 \begin{frame}{System call virtualization}
   \begin{center}
     \includegraphics[scale=0.4]{adv_architecture.png}
   \end{center}
 \end{frame}
+
+\section{Resource Sharing}
 
 \begin{frame}{Resource Sharing}
   \begin{itemize}
@@ -290,7 +298,8 @@
 
 \section{Evaluation}
 
-	
+	-CFS performance
+		
 	
 \section{Our evaluation}
 
@@ -301,6 +310,7 @@
 	\item Do not show the performance of CFS in operations like: writing and seeking
 	\item Do not explain how solve the problem of centralization for load balance
 	\item Do not show the numbers for acceptable performance
+	\item Tested on a System with only 48 cores
 	\item Code is not available
 	\end{itemize}
 

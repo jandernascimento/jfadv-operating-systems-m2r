@@ -1,5 +1,10 @@
-\BOOKMARK [2][]{Outline0.1}{Process management}{}
-\BOOKMARK [2][]{Outline0.2}{Sharing file}{}
-\BOOKMARK [2][]{Outline0.3}{The prototype}{}
-\BOOKMARK [2][]{Outline0.4}{Evaluation}{}
-\BOOKMARK [2][]{Outline0.5}{Our evaluation}{}
+\BOOKMARK [2][]{Outline0.1}{Scaling Operating Systems For Many Cores}{}
+\BOOKMARK [2][]{Outline0.2}{OS clustering approach}{}
+\BOOKMARK [2][]{Outline0.3}{Overview of Cerberus architecture}{}
+\BOOKMARK [2][]{Outline0.4}{System call virtualization}{}
+\BOOKMARK [2][]{Outline0.5}{Resource Sharing}{}
+\BOOKMARK [2][]{Outline0.6}{Process management}{}
+\BOOKMARK [2][]{Outline0.7}{Sharing file}{}
+\BOOKMARK [2][]{Outline0.8}{The prototype}{}
+\BOOKMARK [2][]{Outline0.9}{Evaluation}{}
+\BOOKMARK [2][]{Outline0.10}{Our evaluation}{}
