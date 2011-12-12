@@ -162,6 +162,13 @@
 
 \section{Process management}
 
+	\begin{frame}[plain]
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.46]{img/cerberus-process-creation}
+		\end{figure}
+	\end{frame}
+
 	\begin{frame}{Remote process}
 
 	\begin{figure} [H]
@@ -169,7 +176,7 @@
 			\includegraphics[scale=0.3]{img/cerberus-process-creation}
 	\end{figure}
 
-	\begin{itemize}
+	\begin{itemize}[<+->]
 	\item Create local process
 	\item Saves the state of the process
 	\item Request target OS to create a process
@@ -177,40 +184,33 @@
 	\end{itemize}
 	
 	\end{frame}	
-
-	\begin{frame}[plain]
+	
+	\begin{frame}{Fork and Clone}
+	
 		\begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.46]{img/cerberus-process-creation}
-		\end{figure}
-	\end{frame}
+			\includegraphics[scale=0.40]{img/cerberus-fork-clone}
+		\end{figure}	
 	
-	\begin{frame}{Performance techniques}
+	\end{frame}	
+	
+	\begin{frame}{Turn into reality}
 
+	Main changes?	
 	\begin{itemize}
-	\item Only certain levels of the page tables are shared
-	\item Use domains to address page faults
-	\item Avoid conflicting by enforcing update memory state
+	\item Syscall intercept	
+	\item Virtualized PID
+	\item Compare and swap to access page table
+	\item Address range abstraction
 	\end{itemize}
 	
-	\end{frame}
-	
-	\begin{frame}{Shared Data Segment}
-	
-	\begin{itemize}	
-		\item Not common for multiprocess application
-		\item Very common for multi-threaded
+	Examples?
+	\begin{itemize}
+	\item Kill
+	\item Futex call
+	\item Set affinity
 	\end{itemize}	
-		
-	\end{frame}
-
-	\begin{frame}{Cerberus arch}
-
-		\begin{figure} [H]
-			\centering
-			\includegraphics[scale=0.40]{img/cerberus-architecture}
-		\end{figure}	
-
+	
 	\end{frame}
 
 	\begin{frame}{Syscall virtualization}
@@ -222,18 +222,35 @@
 
 	\end{frame}
 	
-	\begin{frame}{Fork and Clone}
+	\begin{frame}{Shared Data Segment}
 	
-		\begin{figure} [H]
-			\centering
-			\includegraphics[scale=0.40]{img/cerberus-fork-clone}
-		\end{figure}	
+	Multiprocess application	
+	
+	\begin{itemize}	
+		\item Not common share data
+	\end{itemize}	
+	
+	Multi-threaded application:
+	
+	\begin{itemize}		
+	\item Process table
+	\item File descriptor table
+	\end{itemize}
 	
 	\end{frame}
 
+%	\begin{frame}{Cerberus arch}
+%
+%		\begin{figure} [H]
+%			\centering
+%			\includegraphics[scale=0.40]{img/cerberus-architecture}
+%		\end{figure}	
+%
+%	\end{frame}
+
 \section{Sharing file}
 	
-	\begin{frame}{Common approach}	
+	\begin{frame}{Sharing file}	
 	
 		Use existent network file systems:
 		\begin{itemize}
@@ -241,24 +258,22 @@
 		\end{itemize}
 		
 		Issues?
+		\pause 
+		
 		\begin{itemize}
 		\item Centralized
 		\item Rather slow
 		\end{itemize}		
 
-		\begin{alertblock}{}
-			Solution?
-		\end{alertblock}
-
 	\end{frame}	
 	
 	\begin{frame}{Sharing file}	
 	
-		\begin{block}{Question}
-			How share data files efficiently?
+		\begin{block}{Solution?}
+			Use remote and local file access
 		\end{block}
 		
-		The answer might be:		
+		In another perspective:		
 		\begin{itemize}
 		\item Hybrid solution: local and remote file access.
 		\item Basic security scheme: public or private file.
@@ -270,36 +285,80 @@
 
 		\begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.40]{img/cerberus-cfs}
+			\includegraphics[scale=0.45]{img/cerberus-cfs}
 		\end{figure}	
 
 	\end{frame}
 
-\section{The prototype}
+\section{Evaluation}
 
-	\begin{frame}{Prototype}
+	\begin{frame}{Evaluation environment}
 
+	Hardware overview
+	
+	Configuration 1:
+	\begin{itemize}
+	\item AMD 48 cores (8 x 6-cores) 
+	\item 4 network cards
+	\end{itemize}	
+
+	Configuration 2:
+	\begin{itemize}
+	\item Intel Quadcore 4 cores
+	\item 8 network cards
+	\end{itemize}	
+	\end{frame}
+
+	\begin{frame}{Stepping stone}
+	
 	Tech overview:
 	\begin{itemize}
 	\item based on Xen
-	\item Uses compare and swap to look for gaps
-	\item using shadow mode page table
-	\item re-implement a subset of POSIX calls
-	\item Using P2M
+	\item POSIX calls re-implemented
 	\end{itemize}
-	
-	Hardware overview
-	\begin{itemize}
-	\item AMD 48 cores
-	\item 4 network cards
-	\end{itemize}	
-		
+
+	All performance measurements repeated at least 3x
+
 	\end{frame}
 
-\section{Evaluation}
+	\begin{frame}{Sending signals}
 
-	-CFS performance
+		Result of ping-ponging signals:
 		
+		\begin{tabular}{|c|c|c|}
+		\hline Case & Intel & AMD \\ 
+		\hline Native Linux & 7.9ms & 4.0ms \\ 
+		\hline Xen-Linux & 38.7ms & 74.1ms \\ 
+		\hline Cerberus local & 43.1ms & 72.3ms \\ 
+		\hline Cerberus remote & 25.8ms & 45.0ms \\ 
+		\hline 
+		\end{tabular} 
+	
+	\end{frame}
+	
+	\begin{frame}{Fork}
+
+		Forking remotely:		
+		
+		\begin{tabular}{|c|c|c|}
+		\hline Primitive & Config & Time \\ 
+		\hline remote fork & 1 process & 5.40ms \\ 
+		\hline remote fork & 24 process & 31.77ms \\ 		
+		\hline 
+		\end{tabular} 
+
+	\end{frame}
+	
+	\begin{frame}{WebServer}
+	
+		Testing Cerberus as a virtualized WebServer
+	
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.60]{img/cerberus-webserver}
+		\end{figure}		
+	
+	\end{frame}	
 	
 \section{Our evaluation}
 
@@ -313,6 +372,16 @@
 	\item Tested on a System with only 48 cores
 	\item Code is not available
 	\end{itemize}
+
+	\end{frame}
+
+\section{That is it}
+
+	\begin{frame}{}
+
+	\begin{alertblock}{Thanks for the patience}
+	Question?
+	\end{alertblock}
 
 	\end{frame}
 
