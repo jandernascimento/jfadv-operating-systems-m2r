@@ -6,6 +6,6 @@
 \beamer@sectionintoc {5}{Resource Sharing}{14}{0}{5}
 \beamer@sectionintoc {6}{Process management}{15}{0}{6}
 \beamer@sectionintoc {7}{Sharing file}{24}{0}{7}
-\beamer@sectionintoc {8}{Evaluation}{28}{0}{8}
-\beamer@sectionintoc {9}{Our evaluation}{33}{0}{9}
-\beamer@sectionintoc {10}{That is it}{34}{0}{10}
+\beamer@sectionintoc {8}{Evaluation}{29}{0}{8}
+\beamer@sectionintoc {9}{Our evaluation}{34}{0}{9}
+\beamer@sectionintoc {10}{That is it}{35}{0}{10}
