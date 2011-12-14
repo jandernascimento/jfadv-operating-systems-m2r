@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.20)  12 DEC 2011 19:56
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.20)  14 DEC 2011 09:35
 entering extended mode
  %&-line parsing enabled.
 **presentation.tex
@@ -1133,7 +1133,7 @@ File: img/syscall-virtualization.png Graphic file (type png)
 ] [26
 
 ]
-<img/cerberus-cfs.png, id=1015, 343.2825pt x 379.4175pt>
+<img/cerberus-cfs.png, id=1016, 343.2825pt x 379.4175pt>
 File: img/cerberus-cfs.png Graphic file (type png)
 
 <use img/cerberus-cfs.png> [27
@@ -1147,20 +1147,22 @@ File: img/cerberus-cfs.png Graphic file (type png)
 
 ] [31
 
+] [32
+
 ]
-<img/cerberus-webserver.png, id=1196, 514.92375pt x 298.11375pt>
+<img/cerberus-webserver.png, id=1232, 514.92375pt x 298.11375pt>
 File: img/cerberus-webserver.png Graphic file (type png)
 
 <use img/cerberus-webserver.png>
-Overfull \hbox (30.11949pt too wide) in paragraph at lines 361--361
+Overfull \hbox (30.11949pt too wide) in paragraph at lines 376--376
  [] 
  []
 
-[32
+[33
 
- <./img/cerberus-webserver.png (PNG copy)>] [33
+ <./img/cerberus-webserver.png (PNG copy)>] [34
 
-] [34
+] [35
 
 ]
 \tf@nav=\write5
@@ -1179,10 +1181,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 13774 strings out of 495061
- 241303 string characters out of 1182621
+ 13778 strings out of 495061
+ 241338 string characters out of 1182621
  324286 words of memory out of 3000000
- 16493 multiletter control sequences out of 15000+50000
+ 16495 multiletter control sequences out of 15000+50000
  12516 words of font info for 46 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  45i,15n,61p,347b,599s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1193,9 +1195,9 @@ type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/cm/cmssi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/sym
 bols/msam7.pfb>
-Output written on presentation.pdf (34 pages, 650557 bytes).
+Output written on presentation.pdf (35 pages, 658658 bytes).
 PDF statistics:
- 1344 PDF objects out of 1440 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
+ 1381 PDF objects out of 1440 (max. 8388607)
+ 80 named destinations out of 1000 (max. 500000)
  164 words of extra memory for PDF output out of 10000 (max. 10000000)
 
